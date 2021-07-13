@@ -1,4 +1,4 @@
-from ubuntu:14.04
+from ubuntu:21.04
 
 run apt-get update -y
 run apt-get install -y mercurial
@@ -13,9 +13,10 @@ run apt-get install -y cmake
 run apt-get install -y build-essential
 run apt-get install -y tcpdump
 run apt-get install -y screen
+run apt-get install -y wget
 
 # Install go
-run curl https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz | tar -C /usr/local -zx
+run curl https://dl.google.com/go/go1.16.5.linux-amd64.tar.gz | tar -C /usr/local -zx
 env GOROOT /usr/local/go
 env PATH /usr/local/go/bin:$PATH
 
@@ -28,7 +29,7 @@ env PKG_CONFIG_PATH /home/dev/lib/pkgconfig
 env LD_LIBRARY_PATH /home/dev/lib
 env GOPATH /home/dev/go:$GOPATH
 
-run go get github.com/dotcloud/gordon/pulls
+# run go get github.com/dotcloud/gordon/pulls
 
 # Create a shared data volume
 # We need to create an empty file, otherwise the volume will
